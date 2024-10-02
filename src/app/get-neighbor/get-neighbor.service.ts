@@ -27,4 +27,14 @@ export class GetNeighborService {
         })
       );
   }
+
+  onMessage() {
+    return this.socket.fromEvent(this.ON_MESSAGE)
+      .pipe(
+        map(data => {
+          console.log(data);
+          return data;
+        })
+      );
+  }
 }

@@ -22,5 +22,12 @@ export class GetNeighborComponent implements OnInit {
     this.gnService.getMessage().subscribe(data=>{
       console.log('DATA', data);
     })
+    this.gnService.onMessage().subscribe(data=>{
+      console.log('onMessage', data);
+    })
+  }
+
+  public sendGoodVibes():void {
+    this.gnService.sendMessage('watafak');
   }
 }
