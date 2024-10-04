@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { GetNeighborService } from './get-neighbor.service';
+import { LoggerService } from '../logger.service';
+import { API_URL } from './get-neighbor.module';
 
 @Component({
   selector: 'app-get-neighbor',
@@ -11,11 +13,15 @@ export class GetNeighborComponent implements OnInit {
 
   constructor(
     private gnService: GetNeighborService,
+    private logger: LoggerService,
+    @Inject(API_URL) public apiUrl: string
   ) {
   }
 
   ngOnInit(): void {
     this.initSubscriptions();
+    this.logger.log();
+    console.log(this);
   }
 
   private initSubscriptions() {
